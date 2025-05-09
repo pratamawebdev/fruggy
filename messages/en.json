@@ -1,0 +1,26 @@
+{
+  "MODULE": {
+    "AUTH-MODULE": {
+      "SIGN-IN-PAGE": {
+        "title": "Masuk",
+        "description": "Silahkan masuk untuk melanjutkan ke halaman utama",
+        "FORM": {
+          "FIELD": {
+            "FIELD-1": {
+              "label": "Email/Username",
+              "placeholder": "Masukkan email atau username anda"
+            },
+            "FIELD-2": {
+              "label": "Kata Sandi",
+              "placeholder": "Masukkan kata sandi anda"
+            }
+          },
+          "BUTTON": {
+            "button-1": "Masuk",
+            "button-2": "Masuk dengan Google"
+          }
+        }
+      }
+    }
+  }
+}
