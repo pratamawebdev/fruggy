@@ -22,25 +22,28 @@ import { useTranslations } from "next-intl";
 import React from "react";
 import { useForm } from "react-hook-form";
 import type { z } from "zod";
-import { signInSchema } from "../../lib/schema";
 import { signIn } from "next-auth/react";
 import { useRouter } from "@/i18n/navigation";
 import { useSearchParams } from "next/navigation";
 import { toast } from "sonner";
+import { signUpSchema } from "../../lib/schema";
 
-const SignInForm = () => {
-  const t = useTranslations("MODULE.AUTH-MODULE.SIGN-IN-PAGE");
+const SignUpForm = () => {
+  const t = useTranslations("MODULE.AUTH-MODULE.SIGN-UP-PAGE");
   const router = useRouter();
   const searchParams = useSearchParams();
-  const form = useForm<z.infer<typeof signInSchema>>({
-    resolver: zodResolver(signInSchema),
+  const form = useForm<z.infer<typeof signUpSchema>>({
+    resolver: zodResolver(signUpSchema),
     defaultValues: {
-      identifier: "",
+      fullName: "",
+      username: "",
+      email: "",
       password: "",
+      confirmPassword: "",
     },
   });
 
-  const onSubmit = async (data: z.infer<typeof signInSchema>) => {
+  const onSubmit = async (data: z.infer<typeof signUpSchema>) => {
     // toast({
     //   title: "You submitted the following values:",
     //   description: (
@@ -79,7 +82,41 @@ const SignInForm = () => {
             <div className="flex flex-col gap-6">
               <FormField
                 control={form.control}
-                name="identifier"
+                name="fullName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t("FORM.FIELD.FIELD-1.label")}</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder={t("FORM.FIELD.FIELD-1.placeholder")}
+                        {...field}
+                      />
+                    </FormControl>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="username"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t("FORM.FIELD.FIELD-1.label")}</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder={t("FORM.FIELD.FIELD-1.placeholder")}
+                        {...field}
+                      />
+                    </FormControl>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="email"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("FORM.FIELD.FIELD-1.label")}</FormLabel>
@@ -103,6 +140,25 @@ const SignInForm = () => {
                     <FormControl>
                       <Input
                         placeholder={t("FORM.FIELD.FIELD-2.placeholder")}
+                        type="password"
+                        {...field}
+                      />
+                    </FormControl>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="confirmPassword"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t("FORM.FIELD.FIELD-2.label")}</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder={t("FORM.FIELD.FIELD-2.placeholder")}
+                        type="password"
                         {...field}
                       />
                     </FormControl>
@@ -131,4 +187,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default SignUpForm;

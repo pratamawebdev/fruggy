@@ -2,6 +2,9 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/providers/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
+import SessionProvider from "@/providers/session-provider";
+import { ReduxProvider } from "@/providers/redux-provider";
 
 export default async function LocaleLayout({
   children,
@@ -24,7 +27,14 @@ export default async function LocaleLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <NextIntlClientProvider>{children}</NextIntlClientProvider>
+          <ReduxProvider>
+            <SessionProvider>
+              <NextIntlClientProvider>
+                {children}
+                <Toaster />
+              </NextIntlClientProvider>
+            </SessionProvider>
+          </ReduxProvider>
         </ThemeProvider>
       </body>
     </html>

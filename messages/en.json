@@ -20,6 +20,38 @@
             "button-2": "Masuk dengan Google"
           }
         }
+      },
+      "SIGN-UP-PAGE": {
+        "title": "Daftar",
+        "description": "Silahkan daftar untuk melanjutkan ke halaman utama",
+        "FORM": {
+          "FIELD": {
+            "FIELD-1": {
+              "label": "Nama Lengkap",
+              "placeholder": "Masukkan nama lengkap anda"
+            },
+            "FIELD-2": {
+              "label": "Username",
+              "placeholder": "Masukkan username anda"
+            },
+            "FIELD-3": {
+              "label": "Email",
+              "placeholder": "Masukkan email anda"
+            },
+            "FIELD-4": {
+              "label": "Kata Sandi",
+              "placeholder": "Masukkan kata sandi anda"
+            },
+            "FIELD-5": {
+              "label": "Konfirmasi Kata Sandi",
+              "placeholder": "Masukkan ulang kata sandi anda"
+            }
+          },
+          "BUTTON": {
+            "button-1": "Daftar",
+            "button-2": "Daftar dengan Google"
+          }
+        }
       }
     }
   }
